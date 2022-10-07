@@ -18,7 +18,9 @@ public class Gcd {
     }
 
     public static String getRightAnswer() {
-
+        if (firstNumber == 0 || secondNumber == 0) {
+            return String.valueOf(Math.max(firstNumber, secondNumber));
+        }
         while (firstNumber != secondNumber) {
 
             if (firstNumber > secondNumber) {
