@@ -40,6 +40,6 @@ public class Progression {
             }
         }
 
-        return seq.toString();
+        return seq.toString().trim();
     }
 }
