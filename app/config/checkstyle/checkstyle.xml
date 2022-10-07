@@ -204,5 +204,6 @@
         <module name="SuppressionCommentFilter">
             <property name="checkFormat" value="MethodLength"/>
         </module>
+        <module name="MagicNumber"/>
     </module>
 </module>

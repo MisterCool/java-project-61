@@ -25,7 +25,7 @@ public class Progression {
         int step = generateRandomNumber();
 
         List<Integer> integers = IntStream.iterate(startNumber, n -> n + step)
-                .limit(10)
+                .limit(RECOMMENDED_LENGTH_SEQ)
                 .boxed().toList();
 
         StringBuilder seq = new StringBuilder();

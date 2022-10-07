@@ -10,11 +10,12 @@ import java.util.Scanner;
 
 public class Engine {
 
-    private static int numberRounds = 3;
+    private static final int NUMBER_ROUNDS = 3;
     private static final Scanner SCANNER = new Scanner(System.in);
     public static void gameStartCalc(String username) {
         Calculator.startRound();
-        while (numberRounds != 0) {
+        int currentRound = 0;
+        while (currentRound != NUMBER_ROUNDS) {
             System.out.println("Question: " + Calculator.getQuestion());
             String userAnswer = SCANNER.next();
 
@@ -22,7 +23,7 @@ public class Engine {
 
             if (userAnswer.equals(rightAnswer)) {
                 System.out.println("Correct!");
-                numberRounds--;
+                currentRound++;
             } else {
                 System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
                         + "'" + rightAnswer + "'.");
@@ -38,7 +39,8 @@ public class Engine {
 
     public static void gameStartEven(String username) {
         Even.startRound();
-        while (numberRounds != 0) {
+        int currentRound = 0;
+        while (currentRound != NUMBER_ROUNDS) {
             System.out.println("Question: " + Even.getQuestion());
             String userAnswer = SCANNER.next();
 
@@ -46,7 +48,7 @@ public class Engine {
 
             if (userAnswer.equals(rightAnswer)) {
                 System.out.println("Correct!");
-                numberRounds--;
+                currentRound++;
             } else {
                 System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
                         + "'" + rightAnswer + "'.");
@@ -62,7 +64,8 @@ public class Engine {
 
     public static void gameStartGcd(String username) {
         Gcd.startRound();
-        while (numberRounds != 0) {
+        int currentRound = 0;
+        while (currentRound != NUMBER_ROUNDS) {
             System.out.println("Question: " + Gcd.getQuestion());
             String userAnswer = SCANNER.next();
 
@@ -70,7 +73,7 @@ public class Engine {
 
             if (userAnswer.equals(rightAnswer)) {
                 System.out.println("Correct!");
-                numberRounds--;
+                currentRound++;
             } else {
                 System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
                         + "'" + rightAnswer + "'.");
@@ -86,7 +89,8 @@ public class Engine {
 
     public static void gameStartProgression(String username) {
         Progression.startRound();
-        while (numberRounds != 0) {
+        int currentRound = 0;
+        while (currentRound != NUMBER_ROUNDS) {
             System.out.println("Question: " + Progression.getQuestion());
             String userAnswer = SCANNER.next();
 
@@ -94,7 +98,7 @@ public class Engine {
 
             if (userAnswer.equals(rightAnswer)) {
                 System.out.println("Correct!");
-                numberRounds--;
+                currentRound++;
             } else {
                 System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
                         + "'" + rightAnswer + "'.");
@@ -110,7 +114,8 @@ public class Engine {
 
     public static void gameStartPrime(String username) {
         Prime.startRound();
-        while (numberRounds != 0) {
+        int currentRound = 0;
+        while (currentRound != NUMBER_ROUNDS) {
             System.out.println("Question: " + Prime.getQuestion());
             String userAnswer = SCANNER.next();
 
@@ -118,7 +123,7 @@ public class Engine {
 
             if (userAnswer.equals(rightAnswer)) {
                 System.out.println("Correct!");
-                numberRounds--;
+                currentRound++;
             } else {
                 System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
                         + "'" + rightAnswer + "'.");
