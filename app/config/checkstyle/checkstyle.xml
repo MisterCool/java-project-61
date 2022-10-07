@@ -205,5 +205,6 @@
             <property name="checkFormat" value="MethodLength"/>
         </module>
         <module name="MagicNumber"/>
+        <module name="HiddenField"/>
     </module>
 </module>

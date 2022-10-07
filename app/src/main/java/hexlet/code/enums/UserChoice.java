@@ -29,9 +29,9 @@ public enum UserChoice {
                 .findFirst().orElseThrow(() -> new RuntimeException("Game not found"));
     }
 
-    UserChoice(int id, String description) {
-        this.id = id;
-        this.description = description;
+    UserChoice(int value, String descr) {
+        this.id = value;
+        this.description = descr;
     }
     private final int id;
     private final String description;
