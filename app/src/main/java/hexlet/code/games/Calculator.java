@@ -22,7 +22,7 @@ public class Calculator {
         secondNumber = RandomUtils.generateRandomNumber();
         mathOperation = RandomUtils.generateRandomMathOperation();
 
-        return firstNumber + mathOperation + secondNumber;
+        return firstNumber + " " + mathOperation + " " + secondNumber;
     }
 
     public static int calculate() {
