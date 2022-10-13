@@ -1,9 +1,11 @@
 package hexlet.code.games;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.stream.IntStream;
 
-import static hexlet.code.utils.RandomUtils.generateRandomIndex;
 import static hexlet.code.utils.RandomUtils.generateRandomNumber;
 
 public class Progression {
@@ -16,8 +18,8 @@ public class Progression {
 
     private static int rightAnswer;
 
-    public static void startRound() {
-        System.out.println("What number is missing in the progression?");
+    public static String getRoundText() {
+        return "What number is missing in the progression?";
     }
 
     public static String getQuestion() {
@@ -41,5 +43,18 @@ public class Progression {
         }
 
         return seq.toString().trim();
+    }
+
+    public static Map<String, String> prepareData(int rounds) {
+        Map<String, String> questionByRightAnswer = new HashMap<>();
+        for (int i = 0; i < rounds; i++) {
+            questionByRightAnswer.put(getQuestion(), getRightAnswer());
+        }
+        return questionByRightAnswer;
+    }
+
+    public static int generateRandomIndex(int arraySize) {
+        Random random = new Random();
+        return random.nextInt(arraySize);
     }
 }

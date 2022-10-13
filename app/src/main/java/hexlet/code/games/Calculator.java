@@ -2,6 +2,12 @@ package hexlet.code.games;
 
 import hexlet.code.utils.RandomUtils;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+
 public class Calculator {
 
     private static int firstNumber;
@@ -12,15 +18,14 @@ public class Calculator {
         return String.valueOf(calculate());
     }
 
-    public static void startRound() {
-        System.out.println("What is the result of the expression?");
-
+    public static String getRoundText() {
+        return "What is the result of the expression?";
     }
 
     public static String getQuestion() {
         firstNumber = RandomUtils.generateRandomNumber();
         secondNumber = RandomUtils.generateRandomNumber();
-        mathOperation = RandomUtils.generateRandomMathOperation();
+        mathOperation = generateRandomMathOperation();
 
         return firstNumber + " " + mathOperation + " " + secondNumber;
     }
@@ -38,5 +43,19 @@ public class Calculator {
             }
             default -> throw new RuntimeException("unknown operation");
         }
+    }
+
+    public static Map<String, String> prepareData(int rounds) {
+        Map<String, String> questionByRightAnswer = new HashMap<>();
+        for (int i = 0; i < rounds; i++) {
+            questionByRightAnswer.put(getQuestion(), getRightAnswer());
+        }
+        return questionByRightAnswer;
+    }
+
+    public static String generateRandomMathOperation() {
+        Random random = new Random();
+        List<String> mathOperations = List.of("+", "-", "*");
+        return mathOperations.get(random.nextInt(mathOperations.size()));
     }
 }

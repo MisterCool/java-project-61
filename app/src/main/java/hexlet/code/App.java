@@ -1,6 +1,11 @@
 package hexlet.code;
 
 import hexlet.code.enums.UserChoice;
+import hexlet.code.games.Calculator;
+import hexlet.code.games.Even;
+import hexlet.code.games.Gcd;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
@@ -33,28 +38,14 @@ public class App {
 
         switch (gameName) {
             case EXIT -> System.exit(1);
-            case GREETING -> Cli.greetingToTheUser();
-            case EVEN -> {
-                Cli.greetingToTheUser();
-                Engine.gameStartEven(Cli.getUsername());
-            }
-            case CALC -> {
-                Cli.greetingToTheUser();
-                Engine.gameStartCalc(Cli.getUsername());
-            }
-            case GCD -> {
-                Cli.greetingToTheUser();
-                Engine.gameStartGcd(Cli.getUsername());
-            }
-            case PROGRESSION -> {
-                Cli.greetingToTheUser();
-                Engine.gameStartProgression(Cli.getUsername());
-            }
-            case PRIME -> {
-                Cli.greetingToTheUser();
-                Engine.gameStartPrime(Cli.getUsername());
-            }
-            default -> throw new RuntimeException("unknown game");
+            case GREETING -> Engine.greetingToTheUser();
+            case EVEN -> Engine.start(Even.getRoundText(), Even.prepareData(Engine.getNumberRounds()));
+            case CALC -> Engine.start(Calculator.getRoundText(), Calculator.prepareData(Engine.getNumberRounds()));
+            case GCD -> Engine.start(Gcd.getRoundText(), Gcd.prepareData(Engine.getNumberRounds()));
+            case PROGRESSION ->
+                    Engine.start(Progression.getRoundText(), Progression.prepareData(Engine.getNumberRounds()));
+            case PRIME -> Engine.start(Prime.getRoundText(), Prime.prepareData(Engine.getNumberRounds()));
+            default -> throw new RuntimeException("Unknown game");
         }
     }
 }

@@ -1,54 +1,45 @@
 package hexlet.code;
 
-import hexlet.code.games.Calculator;
-import hexlet.code.games.Even;
-import hexlet.code.games.Gcd;
-import hexlet.code.games.Prime;
-import hexlet.code.games.Progression;
-
+import java.util.Map;
 import java.util.Scanner;
 
 public class Engine {
 
-    private static final int NUMBER_ROUNDS = 3;
+    public static final int NUMBER_ROUNDS = 3;
+
+    public static int getNumberRounds() {
+        return NUMBER_ROUNDS;
+    }
+
     private static final Scanner SCANNER = new Scanner(System.in);
-    public static void gameStartCalc(String username) {
-        Calculator.startRound();
-        int currentRound = 0;
-        while (currentRound != NUMBER_ROUNDS) {
-            System.out.println("Question: " + Calculator.getQuestion());
-            String userAnswer = SCANNER.next();
 
-            String rightAnswer = Calculator.getRightAnswer();
+    private static String username;
 
-            if (userAnswer.equals(rightAnswer)) {
-                System.out.println("Correct!");
-                currentRound++;
-            } else {
-                System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
-                        + "'" + rightAnswer + "'.");
+    public static void greetingToTheUser() {
+        System.out.println("Welcome to the Brain Games!");
+        System.out.println("May I have your name?");
 
-                System.out.println("Let's try again, " + username + "!");
-                return;
-            }
-            SCANNER.reset();
-        }
-
-        System.out.println("Congratulations, " + username + "!");
+        Scanner scan = new Scanner(System.in);
+        username = scan.next();
+        String greetings = "Hello, %s!";
+        System.out.println(String.format(greetings, username));
     }
 
-    public static void gameStartEven(String username) {
-        Even.startRound();
-        int currentRound = 0;
-        while (currentRound != NUMBER_ROUNDS) {
-            System.out.println("Question: " + Even.getQuestion());
+    public static void start(String textRound, Map<String, String> questionByRightAnswer) {
+
+        greetingToTheUser();
+
+        System.out.println(textRound);
+
+        for (Map.Entry<String, String> entry : questionByRightAnswer.entrySet()) {
+            System.out.println("Question: " + entry.getKey());
+
             String userAnswer = SCANNER.next();
 
-            String rightAnswer = Even.getRightAnswer();
+            String rightAnswer = entry.getValue();
 
             if (userAnswer.equals(rightAnswer)) {
                 System.out.println("Correct!");
-                currentRound++;
             } else {
                 System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
                         + "'" + rightAnswer + "'.");
@@ -58,82 +49,6 @@ public class Engine {
             }
             SCANNER.reset();
         }
-
-        System.out.println("Congratulations, " + username + "!");
-    }
-
-    public static void gameStartGcd(String username) {
-        Gcd.startRound();
-        int currentRound = 0;
-        while (currentRound != NUMBER_ROUNDS) {
-            System.out.println("Question: " + Gcd.getQuestion());
-            String userAnswer = SCANNER.next();
-
-            String rightAnswer = Gcd.getRightAnswer();
-
-            if (userAnswer.equals(rightAnswer)) {
-                System.out.println("Correct!");
-                currentRound++;
-            } else {
-                System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
-                        + "'" + rightAnswer + "'.");
-
-                System.out.println("Let's try again, " + username + "!");
-                return;
-            }
-            SCANNER.reset();
-        }
-
-        System.out.println("Congratulations, " + username + "!");
-    }
-
-    public static void gameStartProgression(String username) {
-        Progression.startRound();
-        int currentRound = 0;
-        while (currentRound != NUMBER_ROUNDS) {
-            System.out.println("Question: " + Progression.getQuestion());
-            String userAnswer = SCANNER.next();
-
-            String rightAnswer = Progression.getRightAnswer();
-
-            if (userAnswer.equals(rightAnswer)) {
-                System.out.println("Correct!");
-                currentRound++;
-            } else {
-                System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
-                        + "'" + rightAnswer + "'.");
-
-                System.out.println("Let's try again, " + username + "!");
-                return;
-            }
-            SCANNER.reset();
-        }
-
-        System.out.println("Congratulations, " + username + "!");
-    }
-
-    public static void gameStartPrime(String username) {
-        Prime.startRound();
-        int currentRound = 0;
-        while (currentRound != NUMBER_ROUNDS) {
-            System.out.println("Question: " + Prime.getQuestion());
-            String userAnswer = SCANNER.next();
-
-            String rightAnswer = Prime.getRightAnswer();
-
-            if (userAnswer.equals(rightAnswer)) {
-                System.out.println("Correct!");
-                currentRound++;
-            } else {
-                System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
-                        + "'" + rightAnswer + "'.");
-
-                System.out.println("Let's try again, " + username + "!");
-                return;
-            }
-            SCANNER.reset();
-        }
-
         System.out.println("Congratulations, " + username + "!");
     }
 }
