@@ -1,8 +1,8 @@
 package hexlet.code.games;
 
-import java.util.HashMap;
+import hexlet.code.Engine;
+
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -12,11 +12,18 @@ public class Progression {
 
     private static final int RECOMMENDED_LENGTH_SEQ = 10;
 
+    private static int rightAnswer;
+
+    public static final int NUMBER_ROUNDS = 3;
+
+    public static void start() {
+        Engine.start(getRoundText(), prepareData(NUMBER_ROUNDS));
+    }
+
     public static String getRightAnswer() {
         return String.valueOf(rightAnswer);
     }
 
-    private static int rightAnswer;
 
     public static String getRoundText() {
         return "What number is missing in the progression?";
@@ -45,11 +52,17 @@ public class Progression {
         return seq.toString().trim();
     }
 
-    public static Map<String, String> prepareData(int rounds) {
-        Map<String, String> questionByRightAnswer = new HashMap<>();
-        for (int i = 0; i < rounds; i++) {
-            questionByRightAnswer.put(getQuestion(), getRightAnswer());
+    public static String[][] prepareData(int rounds) {
+
+        String[][] questionByRightAnswer = new String[rounds][rounds - 1];
+
+        for (int i = 0; i < questionByRightAnswer.length; i++) {
+            for (int j = 0; j < questionByRightAnswer[i].length - 1; j++) {
+                questionByRightAnswer[i][j] = getQuestion();
+                questionByRightAnswer[i][j + 1] = getRightAnswer();
+            }
         }
+
         return questionByRightAnswer;
     }
 

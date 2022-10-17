@@ -1,14 +1,18 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
 import hexlet.code.utils.RandomUtils;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Gcd {
 
     private static int firstNumber;
     private static int secondNumber;
+
+    public static final int NUMBER_ROUNDS = 3;
+
+    public static void start() {
+        Engine.start(getRoundText(), prepareData(NUMBER_ROUNDS));
+    }
 
     public static String getRoundText() {
         return "Find the greatest common divisor of given numbers.";
@@ -35,11 +39,17 @@ public class Gcd {
         return String.valueOf(firstNumber);
     }
 
-    public static Map<String, String> prepareData(int rounds) {
-        Map<String, String> questionByRightAnswer = new HashMap<>();
-        for (int i = 0; i < rounds; i++) {
-            questionByRightAnswer.put(getQuestion(), getRightAnswer());
+    public static String[][] prepareData(int rounds) {
+
+        String[][] questionByRightAnswer = new String[rounds][rounds - 1];
+
+        for (int i = 0; i < questionByRightAnswer.length; i++) {
+            for (int j = 0; j < questionByRightAnswer[i].length - 1; j++) {
+                questionByRightAnswer[i][j] = getQuestion();
+                questionByRightAnswer[i][j + 1] = getRightAnswer();
+            }
         }
+
         return questionByRightAnswer;
     }
 }

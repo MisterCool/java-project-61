@@ -38,13 +38,12 @@ public class App {
 
         switch (gameName) {
             case EXIT -> System.exit(1);
-            case GREETING -> Engine.greetingToTheUser();
-            case EVEN -> Engine.start(Even.getRoundText(), Even.prepareData(Engine.getNumberRounds()));
-            case CALC -> Engine.start(Calculator.getRoundText(), Calculator.prepareData(Engine.getNumberRounds()));
-            case GCD -> Engine.start(Gcd.getRoundText(), Gcd.prepareData(Engine.getNumberRounds()));
-            case PROGRESSION ->
-                    Engine.start(Progression.getRoundText(), Progression.prepareData(Engine.getNumberRounds()));
-            case PRIME -> Engine.start(Prime.getRoundText(), Prime.prepareData(Engine.getNumberRounds()));
+            case GREETING -> Cli.greetingToTheUser();
+            case EVEN -> Even.start();
+            case CALC -> Calculator.start();
+            case GCD -> Gcd.start();
+            case PROGRESSION -> Progression.start();
+            case PRIME -> Prime.start();
             default -> throw new RuntimeException("Unknown game");
         }
     }
