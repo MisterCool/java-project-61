@@ -52,7 +52,7 @@ public class Calculator {
 
     public static String[][] prepareData(int rounds) {
 
-        String[][] questionByRightAnswer = new String[rounds][rounds - 1];
+        String[][] questionByRightAnswer = new String[rounds][2];
 
         for (int i = 0; i < questionByRightAnswer.length; i++) {
             for (int j = 0; j < questionByRightAnswer[i].length - 1; j++) {
