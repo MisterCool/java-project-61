@@ -16,8 +16,8 @@ public class Calculator {
     public static String getRightAnswer(String question) {
         var arguments = question.split(" ");
         int firstNumber = Integer.parseInt(arguments[0]);
-        int secondNumber = Integer.parseInt(arguments[1]);
-        String operation = arguments[2];
+        String operation = arguments[1];
+        int secondNumber = Integer.parseInt(arguments[2]);
         return String.valueOf(calculate(firstNumber, secondNumber, operation));
     }
 
