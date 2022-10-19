@@ -9,18 +9,16 @@ import java.util.Random;
 
 public class Calculator {
 
-    private static int firstNumber;
-    private static int secondNumber;
-    private static String mathOperation;
-
-    public static final int NUMBER_ROUNDS = 3;
-
     public static void start() {
-        Engine.start(getRoundText(), prepareData(NUMBER_ROUNDS));
+        Engine.start(getRoundText(), prepareData(Engine.NUMBER_ROUNDS));
     }
 
-    public static String getRightAnswer() {
-        return String.valueOf(calculate());
+    public static String getRightAnswer(String question) {
+        var arguments = question.split(" ");
+        int firstNumber = Integer.parseInt(arguments[0]);
+        int secondNumber = Integer.parseInt(arguments[1]);
+        String operation = arguments[2];
+        return String.valueOf(calculate(firstNumber, secondNumber, operation));
     }
 
     public static String getRoundText() {
@@ -28,14 +26,14 @@ public class Calculator {
     }
 
     public static String getQuestion() {
-        firstNumber = RandomUtils.generateRandomNumber();
-        secondNumber = RandomUtils.generateRandomNumber();
-        mathOperation = generateRandomMathOperation();
+        int firstNumber = RandomUtils.generateRandomNumber();
+        int secondNumber = RandomUtils.generateRandomNumber();
+        String mathOperation = generateRandomMathOperation();
 
         return firstNumber + " " + mathOperation + " " + secondNumber;
     }
 
-    public static int calculate() {
+    public static int calculate(int firstNumber, int secondNumber, String mathOperation) {
         switch (mathOperation) {
             case "+" -> {
                 return firstNumber + secondNumber;
@@ -46,19 +44,18 @@ public class Calculator {
             case "*" -> {
                 return firstNumber * secondNumber;
             }
-            default -> throw new RuntimeException("unknown operation");
+            default -> throw new RuntimeException("Unknown operation");
         }
     }
 
     public static String[][] prepareData(int rounds) {
 
-        String[][] questionByRightAnswer = new String[rounds][2];
+        var questionByRightAnswer = new String[rounds][2];
 
         for (int i = 0; i < questionByRightAnswer.length; i++) {
-            for (int j = 0; j < questionByRightAnswer[i].length - 1; j++) {
-                questionByRightAnswer[i][j] = getQuestion();
-                questionByRightAnswer[i][j + 1] = getRightAnswer();
-            }
+            String question = getQuestion();
+            questionByRightAnswer[i][0] = question;
+            questionByRightAnswer[i][1] = getRightAnswer(question);
         }
 
         return questionByRightAnswer;

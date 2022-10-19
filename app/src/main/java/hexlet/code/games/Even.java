@@ -5,11 +5,8 @@ import hexlet.code.utils.RandomUtils;
 
 public class Even {
 
-
-    public static final int NUMBER_ROUNDS = 3;
-
     public static void start() {
-        Engine.start(getRoundText(), prepareData(NUMBER_ROUNDS));
+        Engine.start(getRoundText(), prepareData(Engine.NUMBER_ROUNDS));
     }
 
     public static String getRoundText() {
@@ -28,14 +25,13 @@ public class Even {
 
     public static String[][] prepareData(int rounds) {
 
-        String[][] questionByRightAnswer = new String[rounds][2];
+        var questionByRightAnswer = new String[rounds][2];
 
         for (int i = 0; i < questionByRightAnswer.length; i++) {
-            for (int j = 0; j < questionByRightAnswer[i].length - 1; j++) {
-                String question = getQuestion();
-                questionByRightAnswer[i][j] = question;
-                questionByRightAnswer[i][j + 1] = isEven(Integer.parseInt(question)) ? "yes" : "no";
-            }
+            String question = getQuestion();
+            questionByRightAnswer[i][0] = question;
+            questionByRightAnswer[i][1] = isEven(Integer.parseInt(question)) ? "yes" : "no";
+
         }
 
         return questionByRightAnswer;

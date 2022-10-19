@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Engine {
 
+    public static final int NUMBER_ROUNDS = 3;
+
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void start(String textRound, String[][] questionByRightAnswer) {

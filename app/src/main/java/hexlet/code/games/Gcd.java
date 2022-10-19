@@ -5,13 +5,8 @@ import hexlet.code.utils.RandomUtils;
 
 public class Gcd {
 
-    private static int firstNumber;
-    private static int secondNumber;
-
-    public static final int NUMBER_ROUNDS = 3;
-
     public static void start() {
-        Engine.start(getRoundText(), prepareData(NUMBER_ROUNDS));
+        Engine.start(getRoundText(), prepareData(Engine.NUMBER_ROUNDS));
     }
 
     public static String getRoundText() {
@@ -19,12 +14,12 @@ public class Gcd {
     }
 
     public static String getQuestion() {
-        firstNumber = RandomUtils.generateRandomNumber();
-        secondNumber = RandomUtils.generateRandomNumber();
+        int firstNumber = RandomUtils.generateRandomNumber();
+        int secondNumber = RandomUtils.generateRandomNumber();
         return firstNumber + " " + secondNumber;
     }
 
-    public static String getRightAnswer() {
+    public static String getRightAnswer(int firstNumber, int secondNumber) {
         if (firstNumber == 0 || secondNumber == 0) {
             return String.valueOf(Math.max(firstNumber, secondNumber));
         }
@@ -44,10 +39,11 @@ public class Gcd {
         String[][] questionByRightAnswer = new String[rounds][2];
 
         for (int i = 0; i < questionByRightAnswer.length; i++) {
-            for (int j = 0; j < questionByRightAnswer[i].length - 1; j++) {
-                questionByRightAnswer[i][j] = getQuestion();
-                questionByRightAnswer[i][j + 1] = getRightAnswer();
-            }
+            String question = getQuestion();
+            questionByRightAnswer[i][0] = question;
+            questionByRightAnswer[i][1] = getRightAnswer(
+                 Integer.parseInt(question.split(" ")[0]),
+                    Integer.parseInt(question.split(" ")[1]));
         }
 
         return questionByRightAnswer;
