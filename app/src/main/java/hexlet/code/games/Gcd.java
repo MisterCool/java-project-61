@@ -13,7 +13,7 @@ public class Gcd {
         return "Find the greatest common divisor of given numbers.";
     }
 
-    private static String[] getQuestionByRightAnswer() {
+    private static String[] getQuestionAndRightAnswer() {
         String[] questionByRightAnswer = new String[2];
         int firstNumber = RandomUtils.generateRandomNumber();
         int secondNumber = RandomUtils.generateRandomNumber();
@@ -43,7 +43,7 @@ public class Gcd {
         String[][] gameData = new String[rounds][2];
 
         for (int i = 0; i < gameData.length; i++) {
-            String[] questionByRightAnswer = getQuestionByRightAnswer();
+            String[] questionByRightAnswer = getQuestionAndRightAnswer();
             gameData[i][0] = questionByRightAnswer[0];
             gameData[i][1] = questionByRightAnswer[1];
         }
