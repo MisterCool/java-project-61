@@ -14,26 +14,26 @@ public class Even {
 
     }
 
-    public static boolean isEven(int number) {
+    private static boolean isEven(int number) {
         return number % 2 == 0;
     }
 
-    public static String getQuestion() {
+    private static String getQuestion() {
         int number = RandomUtils.generateRandomNumber();
         return String.valueOf(number);
     }
 
     public static String[][] prepareData(int rounds) {
 
-        var questionByRightAnswer = new String[rounds][2];
+        var gameData = new String[rounds][2];
 
-        for (int i = 0; i < questionByRightAnswer.length; i++) {
+        for (int i = 0; i < gameData.length; i++) {
             String question = getQuestion();
-            questionByRightAnswer[i][0] = question;
-            questionByRightAnswer[i][1] = isEven(Integer.parseInt(question)) ? "yes" : "no";
+            gameData[i][0] = question;
+            gameData[i][1] = isEven(Integer.parseInt(question)) ? "yes" : "no";
 
         }
 
-        return questionByRightAnswer;
+        return gameData;
     }
 }

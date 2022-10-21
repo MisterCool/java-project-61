@@ -13,9 +13,9 @@ public class Prime {
         return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     }
 
-    public static boolean isPrime(int number) {
+    private static boolean isPrime(int number) {
 
-        if (number == 1 || number <= 0) {
+        if (number <= 1) {
             return false;
         }
         for (int i = 2; i <= number / 2; ++i) {
@@ -26,21 +26,21 @@ public class Prime {
         return true;
     }
 
-    public static String getQuestion() {
+    private static String getQuestion() {
         int number = RandomUtils.generateRandomNumber();
         return String.valueOf(number);
     }
 
     public static String[][] prepareData(int rounds) {
 
-        String[][] questionByRightAnswer = new String[rounds][2];
+        String[][] gameData = new String[rounds][2];
 
-        for (int i = 0; i < questionByRightAnswer.length; i++) {
+        for (int i = 0; i < gameData.length; i++) {
             String question = getQuestion();
-            questionByRightAnswer[i][0] = question;
-            questionByRightAnswer[i][1] = isPrime(Integer.parseInt(question)) ? "yes" : "no";
+            gameData[i][0] = question;
+            gameData[i][1] = isPrime(Integer.parseInt(question)) ? "yes" : "no";
         }
 
-        return questionByRightAnswer;
+        return gameData;
     }
 }

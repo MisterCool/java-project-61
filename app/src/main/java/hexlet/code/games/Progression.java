@@ -20,7 +20,7 @@ public class Progression {
         return "What number is missing in the progression?";
     }
 
-    public static String[] getQuestion() {
+    private static String[] getQuestionAndRightAnswer() {
         int startNumber = generateRandomNumber();
         int step = generateRandomNumber();
         String[] progressionByHiddenElement = new String[2];
@@ -29,7 +29,7 @@ public class Progression {
                 .boxed().toList();
 
         StringBuilder seq = new StringBuilder();
-        int hiddenElementIndex = generateRandomIndex(RECOMMENDED_LENGTH_SEQ);
+        int hiddenElementIndex = generateRandomIndex();
 
         for (int i = 0; i < arithmeticProgression.size(); i++) {
             if (i == hiddenElementIndex) {
@@ -46,19 +46,19 @@ public class Progression {
 
     public static String[][] prepareData(int rounds) {
 
-        String[][] questionByRightAnswer = new String[rounds][2];
+        String[][] gameData = new String[rounds][2];
 
-        for (int i = 0; i < questionByRightAnswer.length; i++) {
-            String[] question = getQuestion();
-            questionByRightAnswer[i][0] = question[0];
-            questionByRightAnswer[i][1] = question[1];
+        for (int i = 0; i < gameData.length; i++) {
+            String[] question = getQuestionAndRightAnswer();
+            gameData[i][0] = question[0];
+            gameData[i][1] = question[1];
         }
 
-        return questionByRightAnswer;
+        return gameData;
     }
 
-    public static int generateRandomIndex(int arraySize) {
+    private static int generateRandomIndex() {
         Random random = new Random();
-        return random.nextInt(arraySize);
+        return random.nextInt(Progression.RECOMMENDED_LENGTH_SEQ);
     }
 }

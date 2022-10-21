@@ -22,25 +22,23 @@ public class Engine {
 
 
         for (String[] strings : questionByRightAnswer) {
-            for (int j = 0; j < strings.length - 1; j++) {
-                System.out.println("Question: " + strings[j]);
-                String userAnswer = SCANNER.next();
+            System.out.println("Question: " + strings[0]);
+            String userAnswer = SCANNER.next();
 
-                String rightAnswer = strings[j + 1];
+            String rightAnswer = strings[1];
 
-                if (userAnswer.equals(rightAnswer)) {
-                    System.out.println("Correct!");
-                } else {
-                    System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
-                            + "'" + rightAnswer + "'.");
+            if (userAnswer.equals(rightAnswer)) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println("'" + userAnswer + "'" + " is wrong answer ;(."
+                    + " Correct answer was " + "'" + rightAnswer + "'.");
 
-                    System.out.println("Let's try again, " + username + "!");
-                    return;
-                }
-                SCANNER.reset();
+                System.out.println("Let's try again, " + username + "!");
+                return;
             }
-            System.out.println("Congratulations, " + username + "!");
+            SCANNER.reset();
         }
+        System.out.println("Congratulations, " + username + "!");
 
     }
 }

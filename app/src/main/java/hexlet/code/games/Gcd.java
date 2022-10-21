@@ -13,13 +13,17 @@ public class Gcd {
         return "Find the greatest common divisor of given numbers.";
     }
 
-    public static String getQuestion() {
+    private static String[] getQuestionByRightAnswer() {
+        String[] questionByRightAnswer = new String[2];
         int firstNumber = RandomUtils.generateRandomNumber();
         int secondNumber = RandomUtils.generateRandomNumber();
-        return firstNumber + " " + secondNumber;
+
+        questionByRightAnswer[0] = firstNumber + " " + secondNumber;
+        questionByRightAnswer[1] = getRightAnswer(firstNumber, secondNumber);
+        return questionByRightAnswer;
     }
 
-    public static String getRightAnswer(int firstNumber, int secondNumber) {
+    private static String getRightAnswer(int firstNumber, int secondNumber) {
         if (firstNumber == 0 || secondNumber == 0) {
             return String.valueOf(Math.max(firstNumber, secondNumber));
         }
@@ -36,16 +40,14 @@ public class Gcd {
 
     public static String[][] prepareData(int rounds) {
 
-        String[][] questionByRightAnswer = new String[rounds][2];
+        String[][] gameData = new String[rounds][2];
 
-        for (int i = 0; i < questionByRightAnswer.length; i++) {
-            String question = getQuestion();
-            questionByRightAnswer[i][0] = question;
-            questionByRightAnswer[i][1] = getRightAnswer(
-                 Integer.parseInt(question.split(" ")[0]),
-                    Integer.parseInt(question.split(" ")[1]));
+        for (int i = 0; i < gameData.length; i++) {
+            String[] questionByRightAnswer = getQuestionByRightAnswer();
+            gameData[i][0] = questionByRightAnswer[0];
+            gameData[i][1] = questionByRightAnswer[1];
         }
 
-        return questionByRightAnswer;
+        return gameData;
     }
 }

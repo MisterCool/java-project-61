@@ -13,7 +13,7 @@ public class Calculator {
         Engine.start(getRoundText(), prepareData(Engine.NUMBER_ROUNDS));
     }
 
-    public static String getRightAnswer(String question) {
+    private static String getRightAnswer(String question) {
         var arguments = question.split(" ");
         int firstNumber = Integer.parseInt(arguments[0]);
         String operation = arguments[1];
@@ -25,7 +25,7 @@ public class Calculator {
         return "What is the result of the expression?";
     }
 
-    public static String getQuestion() {
+    private static String getQuestion() {
         int firstNumber = RandomUtils.generateRandomNumber();
         int secondNumber = RandomUtils.generateRandomNumber();
         String mathOperation = generateRandomMathOperation();
@@ -33,7 +33,7 @@ public class Calculator {
         return firstNumber + " " + mathOperation + " " + secondNumber;
     }
 
-    public static int calculate(int firstNumber, int secondNumber, String mathOperation) {
+    private static int calculate(int firstNumber, int secondNumber, String mathOperation) {
         switch (mathOperation) {
             case "+" -> {
                 return firstNumber + secondNumber;
@@ -50,18 +50,18 @@ public class Calculator {
 
     public static String[][] prepareData(int rounds) {
 
-        var questionByRightAnswer = new String[rounds][2];
+        var gameData = new String[rounds][2];
 
-        for (int i = 0; i < questionByRightAnswer.length; i++) {
+        for (int i = 0; i < gameData.length; i++) {
             String question = getQuestion();
-            questionByRightAnswer[i][0] = question;
-            questionByRightAnswer[i][1] = getRightAnswer(question);
+            gameData[i][0] = question;
+            gameData[i][1] = getRightAnswer(question);
         }
 
-        return questionByRightAnswer;
+        return gameData;
     }
 
-    public static String generateRandomMathOperation() {
+    private static String generateRandomMathOperation() {
         Random random = new Random();
         List<String> mathOperations = List.of("+", "-", "*");
         return mathOperations.get(random.nextInt(mathOperations.size()));
